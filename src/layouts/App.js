@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
-import Task from './Task';
-import DataAdder from './DataAdd';
+import '../style/layouts/App.css';
+import Task from '../Component/Task';
+import DataAdder from '../Component/DataAdd';
 
 class App extends Component {
   constructor(props) {

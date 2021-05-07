@@ -1,0 +1,38 @@
+.inputData{
+    flex-basis: 100%;
+}
+.addData, .addButton{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: whitesmoke;
+}
+.addData{
+    background-color: transparent;
+    border: 0px;
+    border-bottom: 1px solid white;
+    color: white
+}
+.addButton{
+    margin-left: 1vw;
+    padding: 5px 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.addButton:hover{
+    transform: scale(1.1);
+}
+.active{
+    margin: 2vh 0 5px 0;
+}
+#priority{
+    margin-right: 5px;
+    margin-left: 1vw;
+}
+.deactive{
+    display: none
+}
