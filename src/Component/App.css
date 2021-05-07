@@ -1,0 +1,14 @@
+.toDoHeader{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: darkcyan;
+    padding: 2vh 1vw;
+    box-shadow: 3px 2px 3px black;
+    text-transform: uppercase;
+    color: whitesmoke;
+    display: flex;
+    flex-wrap: wrap;
+}
+.toDoHeader>h2{
+    margin-bottom: 1vh;
+    flex-basis: 100%;
+}

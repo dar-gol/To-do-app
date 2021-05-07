@@ -1,0 +1,60 @@
+.taskBlock{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 100%;
+    height: 5vh;
+    min-height: 50px;
+    background-color: white;
+    opacity: 1;
+    position: relative;
+    color: white;
+}
+.taskBlock>p{
+    position: relative;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    margin-left: 30px;
+}
+
+.taskBlock>.taskButtons{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 30px;
+    z-index: 1;
+}
+
+.taskButtons>button{
+    font-family: monospace;
+    font-size: 20px;
+    background-color: transparent;
+    border: 0px;
+    color: rgb(255, 8, 0);
+    cursor: pointer;
+    opacity: .6;   
+    margin-right: 20px;
+}
+
+.taskButtons>button:hover{
+    opacity: 1;
+} 
+
+.during{
+    background-color: lightgreen;
+}
+.done{
+    text-decoration: line-through;
+    background-color: goldenrod;
+}
+.changing{
+    background-color: aqua;
+    box-shadow: 3px 2px 3px black;
+    z-index: 2;
+}
+.priority{
+    z-index: 2;
+    background-color: gold;
+    box-shadow: 3px 2px 3px black;
+    color: red;
+    
+}
