@@ -1,0 +1,6 @@
+.text-input {
+  @include box-basic(transparent, 0px, null, null, $text-color);
+  @include font();
+  border-bottom: 1px solid white;
+  z-index: 4;
+}

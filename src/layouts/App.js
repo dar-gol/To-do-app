@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import '../style/layouts/App.css';
-import Task from '../Component/Task';
-import DataAdder from '../Component/DataAdd';
 
+import Task from '../components/Task';
+import DataAdder from '../components/DataAdd';
+
+import '../style/main.scss';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -184,9 +185,9 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <header className="toDoHeader">
-          <h2>Lista zadań: </h2>
+      <div className="container">
+        <header className="add-task">
+          <h2 className="add-task__title">Lista zadań </h2>
           <DataAdder
             date={this.state.newDate}
             priority={this.state.newPriority}
@@ -195,7 +196,7 @@ class App extends Component {
             change={this.state.tasksChange}
           />
         </header>
-        <main>
+        <main className="to-do-list">
           {this.state.tasks.map((task, index) => {
             return (
               <Task
@@ -210,7 +211,7 @@ class App extends Component {
             );
           })}
         </main>
-      </>
+      </div>
     );
   }
 }

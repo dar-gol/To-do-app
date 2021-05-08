@@ -1,0 +1,29 @@
+@mixin box-basic(
+  $bg-color: null,
+  $br-size: 0px,
+  $br-style: solid,
+  $br-color: null,
+  $color: white
+) {
+  background-color: $bg-color;
+  border-width: $br-size;
+  border-style: $br-style;
+  border-color: $br-color;
+  color: $color;
+}
+
+@mixin box-margin($top: 0, $right: $top, $bottom: $top, $left: $right) {
+  margin: $top $right $bottom $left;
+}
+
+@mixin box-padding($top: 0, $right: $top, $bottom: $top, $left: $right) {
+  padding: $top $right $bottom $left;
+}
+
+@mixin font() {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+@mixin shadow($offsetX: 3px, $offsetY: 2px, $blur: 3px, $color: $shadow-color) {
+  box-shadow: $offsetX $offsetY $blur $color;
+}

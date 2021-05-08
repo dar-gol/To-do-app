@@ -1,0 +1,45 @@
+.to-do-list {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-header-color;
+  &__task {
+    @include box-basic($bg-color, null, null, null, $bg-header-color);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: $task-height;
+    min-height: 50px;
+    opacity: 1;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    @include box-margin(1vh, $horizontal-shift);
+    &--during {
+      @include box-basic($task-during-color, null, null, null, null);
+    }
+    &--changing {
+      @include shadow();
+      @include box-basic($task-changing-color, null, null, null, $text-color);
+      z-index: 1;
+    }
+    &--priority {
+      @include shadow();
+      @include box-basic($task-priority-color, null, null, null, $text-color);
+      z-index: 1;
+    }
+    &--done {
+      @include box-basic($task-done-color, null, null, null, $text-color);
+      text-decoration: line-through;
+    }
+  }
+  &__container-btn {
+    margin-right: $elements-task-shift;
+    z-index: 1;
+  }
+  &__text {
+    margin-left: $elements-task-shift;
+  }
+  &__button {
+    background-color: $bg-header-color;
+  }
+}

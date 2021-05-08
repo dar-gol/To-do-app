@@ -1,0 +1,16 @@
+$bg-color: #333;
+$bg-header-color: SkyBlue;
+$text-color: whitesmoke;
+$shadow-color: black;
+$btn-color: transparent;
+
+$btn-size: 16px;
+$vertical-shift: 2vh;
+$horizontal-shift: 1vw;
+$elements-task-shift: 30px;
+$task-height: 5vh;
+
+$task-during-color: $text-color;
+$task-changing-color: mix($bg-header-color, rgb(73, 226, 219));
+$task-priority-color: mix($bg-header-color, SpringGreen);
+$task-done-color: $bg-header-color;

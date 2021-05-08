@@ -1,0 +1,10 @@
+@import './utils/variables';
+@import './utils/mixins';
+@import './base/reset';
+@import './base/normalize.scss';
+
+@import './components/button.scss';
+@import './components/text-input.scss';
+@import './layouts/App.scss';
+@import './components/DataAdd.scss';
+@import './components/Task.scss';

@@ -1,40 +1,45 @@
 import React from 'react';
-import '../style/Component/Task.css';
 
 const Task = (props) => {
   const { date } = props.task;
-  console.log(typeof date);
   return (
     <div
-      className={`taskBlock ${
+      className={`to-do-list__task to-do-list__task${
         props.task.during
           ? props.task.isChanged
-            ? 'changing'
+            ? '--changing'
             : props.task.priority
-            ? 'priority'
-            : 'during'
-          : 'done'
+            ? '--priority'
+            : '--during'
+          : '--done'
       }`}
     >
-      <div className="taskButtons">
+      <div className="to-do-list__container-btn">
         <button
+          className="button to-do-list__button"
           name="ButtonDuring"
           onClick={(e) => props.modify(props.index, e)}
         >
           {props.task.during ? 'SKOŃCZONE' : 'W TRAKCIE'}
         </button>
         <button
+          className="button to-do-list__button"
           name="ButtonChange"
           onClick={(e) => props.modify(props.index, e)}
         >
           ZMIEŃ
         </button>
-        <button onClick={() => props.delete(props.index)}>USUŃ</button>
+        <button
+          className="button to-do-list__button"
+          onClick={() => props.delete(props.index)}
+        >
+          USUŃ
+        </button>
       </div>
       {props.task.isChanged ? (
-        <p>...</p>
+        <p className="to-do-list__text">...</p>
       ) : (
-        <p>
+        <p className="to-do-list__text">
           {' '}
           {typeof date === 'boolean'
             ? props.task.name

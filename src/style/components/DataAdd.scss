@@ -1,0 +1,30 @@
+.add-task {
+  @include font();
+  @include box-basic($bg-header-color, null, null, null, $text-color);
+  @include box-padding($vertical-shift, $horizontal-shift);
+  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  &__title {
+    @include box-padding(0, 0, $vertical-shift, 0);
+    margin-bottom: $vertical-shift;
+    flex-basis: 100%;
+    border-bottom: 2px solid $text-color;
+  }
+  &__form {
+    flex-basis: 100%;
+  }
+  &__extends {
+    display: none;
+    &--active {
+      @include box-margin($vertical-shift, 0);
+      display: flex;
+    }
+  }
+  &__checkbox {
+    @include box-margin(0, 0, 0, $horizontal-shift);
+  }
+}
+.react-datepicker-popper {
+  z-index: 2 !important;
+}
