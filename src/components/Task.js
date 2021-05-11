@@ -8,11 +8,10 @@ const Task = (props) => {
         props.task.during
           ? props.task.isChanged
             ? '--changing'
-            : props.task.priority
-            ? '--priority'
             : '--during'
           : '--done'
       }`}
+      style={{ backgroundColor: props.task.priority }}
     >
       <div className="to-do-list__container-btn">
         <button

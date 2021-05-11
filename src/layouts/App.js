@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Task from '../components/Task';
 import DataAdder from '../components/DataAdd';
+import Popup from '../components/Popup';
 
 import '../style/main.scss';
 class App extends Component {
@@ -11,8 +12,9 @@ class App extends Component {
       tasks: [],
       newTask: '',
       tasksChange: false,
-      newPriority: false,
+      newPriority: 'white',
       newDate: '',
+      popup: '',
     };
   }
 
@@ -32,7 +34,7 @@ class App extends Component {
         tasks,
         newTask: '',
         tasksChange: false,
-        newPriority: false,
+        newPriority: 'white',
         newDate: '',
       });
     } else if (e.target.name === 'ButtonChange') {
@@ -91,12 +93,8 @@ class App extends Component {
     }
   };
 
-  handleAddTask = (e) => {
-    if (e.target.type === 'checkbox') {
-      this.setState({
-        newPriority: !this.state.newPriority,
-      });
-    } else if (e.target.name === 'time') {
+  handleAddTask = (e, taskColor = 'white') => {
+    if (e.target.name === 'time') {
       this.setState({
         newDate: e.target.value,
       });
@@ -104,7 +102,8 @@ class App extends Component {
       (e.type === 'click' && e.target.type === 'submit') ||
       (e.keyCode === 13 && e.target.type === 'text')
     ) {
-      this.addTaskToTaskList();
+      console.log({ taskColor });
+      this.addTaskToTaskList(taskColor);
     } else if (e.target.name === 'newTaskInput') {
       this.setState({
         newTask: e.target.value,
@@ -140,7 +139,7 @@ class App extends Component {
     return true;
   }
 
-  addTaskToTaskList = () => {
+  addTaskToTaskList = (taskColor) => {
     let index = undefined;
     this.state.tasks.forEach((task, i) => {
       if (task.isChanged) {
@@ -156,7 +155,7 @@ class App extends Component {
             name: this.state.newTask,
             during: true,
             isChanged: false,
-            priority: this.state.newPriority,
+            priority: taskColor,
             date: date,
           };
           tasks = [...this.state.tasks];
@@ -176,42 +175,55 @@ class App extends Component {
           tasks,
           newTask: '',
           tasksChange: false,
-          newPriority: false,
+          newPriority: 'white',
           newDate: '',
         });
-      } else return alert('Zły format daty lub data juz minęła!');
-    } else return alert('Wpisz nowe zadanie!');
+      } else return this.togglePopup('Zły format daty lub data juz minęła!');
+    } else return this.togglePopup('Proszę wpisać nowe zadanie!');
+  };
+
+  togglePopup = (error) => {
+    this.setState({ popup: error });
   };
 
   render() {
     return (
-      <div className="container">
-        <header className="add-task">
-          <h2 className="add-task__title">Lista zadań </h2>
-          <DataAdder
-            date={this.state.newDate}
-            priority={this.state.newPriority}
-            value={this.state.newTask}
-            addTask={this.handleAddTask}
-            change={this.state.tasksChange}
-          />
-        </header>
-        <main className="to-do-list">
-          {this.state.tasks.map((task, index) => {
-            return (
-              <Task
-                task={task}
-                key={index}
-                index={index}
-                delete={this.handleTaskDeleteButton}
-                modify={this.handleTaskModify}
-                value={this.state.newTask}
-                addTask={this.handleAddTask}
-              />
-            );
-          })}
-        </main>
-      </div>
+      <>
+        {this.state.popup && (
+          <Popup togglePopup={this.togglePopup} error={this.state.popup} />
+        )}
+        <div
+          className={`container ${
+            this.state.popup ? 'container--blur-filter' : ''
+          }`}
+        >
+          <header className="add-task">
+            <h2 className="add-task__title">Lista zadań </h2>
+            <DataAdder
+              date={this.state.newDate}
+              priority={this.state.newPriority}
+              value={this.state.newTask}
+              addTask={this.handleAddTask}
+              change={this.state.tasksChange}
+            />
+          </header>
+          <main className="to-do-list">
+            {this.state.tasks.map((task, index) => {
+              return (
+                <Task
+                  task={task}
+                  key={index}
+                  index={index}
+                  delete={this.handleTaskDeleteButton}
+                  modify={this.handleTaskModify}
+                  value={this.state.newTask}
+                  addTask={this.handleAddTask}
+                />
+              );
+            })}
+          </main>
+        </div>
+      </>
     );
   }
 }

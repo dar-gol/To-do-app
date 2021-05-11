@@ -4,9 +4,22 @@ import DatePicker from 'react-datepicker';
 // import '../style/components/DataAdd.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 
+const taskColor = [
+  'white',
+  'Bisque',
+  'BurlyWood',
+  'CadetBlue',
+  'LightBlue',
+  '#3ab0df',
+];
+
 const DataAdd = (props) => {
   const [active, setActive] = useState('');
   const [startDate, setStartDate] = useState(new Date());
+  const [currentTaskColor, setCurrentTaskColor] = useState('white');
+
+  const handleSetCurrentTaskColor = (color) => setCurrentTaskColor(color);
+
   return (
     <>
       <div className="add-task__form">
@@ -20,7 +33,10 @@ const DataAdd = (props) => {
           onChange={props.addTask}
           value={props.value}
         />
-        <button className="button" onClick={props.addTask}>
+        <button
+          className="button"
+          onClick={(e) => props.addTask(e, currentTaskColor)}
+        >
           {props.change ? 'Zmień' : 'Dodaj'}
         </button>
         <button
@@ -41,15 +57,21 @@ const DataAdd = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="checkbox">
-            <input
-              type="checkbox"
-              className="add-task__checkbox"
-              onChange={props.addTask}
-              checked={props.priority}
-            />
-            Wyższy priorytet
-          </label>
+          {taskColor.map((color, index) => {
+            return (
+              <button
+                key={index}
+                onClick={() => handleSetCurrentTaskColor(color)}
+                name="taskColor"
+                className={`add-task__bg-button ${
+                  currentTaskColor === color
+                    ? `add-task__bg-button--active`
+                    : ''
+                }`}
+                style={{ backgroundColor: color }}
+              ></button>
+            );
+          })}
         </div>
       </div>
     </>

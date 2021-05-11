@@ -18,12 +18,12 @@
       @include box-basic($task-during-color, null, null, null, null);
     }
     &--changing {
-      @include shadow();
+      @include shadow(mix($bg-header-color, grey));
       @include box-basic($task-changing-color, null, null, null, $text-color);
       z-index: 1;
     }
     &--priority {
-      @include shadow();
+      @include shadow(mix($bg-header-color, grey));
       @include box-basic($task-priority-color, null, null, null, $text-color);
       z-index: 1;
     }

@@ -14,3 +14,7 @@ $task-during-color: $text-color;
 $task-changing-color: mix($bg-header-color, rgb(73, 226, 219));
 $task-priority-color: mix($bg-header-color, SpringGreen);
 $task-done-color: $bg-header-color;
+
+//?popup
+$popup-width: 20vw;
+$popup-height: 20vh;

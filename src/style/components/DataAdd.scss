@@ -21,10 +21,62 @@
       display: flex;
     }
   }
-  &__checkbox {
+  &__bg-button {
     @include box-margin(0, 0, 0, $horizontal-shift);
+    @include box-basic(limegreen, 2px, solid, $text-color, null);
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    transition: 0.2s;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.2);
+    }
+    &--active {
+      transform: scale(1.2);
+    }
   }
 }
-.react-datepicker-popper {
-  z-index: 2 !important;
+
+.react-datepicker {
+  color: $text-color !important;
+  border-radius: 20px;
+  background-color: $bg-header-color;
+  border: 0;
+  &-popper {
+    z-index: 2 !important;
+  }
+  &__header {
+    background-color: $bg-header-color;
+    border: 0;
+  }
+  &__day-name,
+  &__day,
+  &__time-name,
+  &__current-month,
+  &-time__header,
+  &-year-header {
+    color: $text-color;
+  }
+  &__day--disabled {
+    text-decoration: line-through;
+  }
+  &__day:hover {
+    background-color: #1d5d90;
+    font-weight: bold;
+  }
+  &__navigation--next {
+    border-left-color: $text-color;
+    &:hover {
+      border-left-color: $text-color;
+      transform: scale(1.2);
+    }
+  }
+  &__navigation--previous {
+    border-right-color: $text-color;
+    &:hover {
+      border-right-color: $text-color;
+      transform: scale(1.2);
+    }
+  }
 }

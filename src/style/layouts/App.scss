@@ -1,4 +1,8 @@
 .container {
   @include shadow();
   @include box-margin($vertical-shift + 1vh, $horizontal-shift + 3vw);
+  &--blur-filter {
+    filter: blur(8px);
+    pointer-events: none;
+  }
 }

@@ -24,6 +24,6 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-@mixin shadow($offsetX: 3px, $offsetY: 2px, $blur: 3px, $color: $shadow-color) {
+@mixin shadow($color: $shadow-color, $offsetX: 3px, $offsetY: 2px, $blur: 3px) {
   box-shadow: $offsetX $offsetY $blur $color;
 }
