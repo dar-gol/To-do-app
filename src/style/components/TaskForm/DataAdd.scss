@@ -25,15 +25,11 @@
     display: flex;
     flex-direction: row;
     flex-basis: 100%;
+    align-items: center;
   }
   &__task-input {
     border: 0;
-    border-right: white solid 1px;
     flex-grow: 1;
-    transition: 0.2s;
-    &:focus {
-      border-bottom: 1px solid white;
-    }
   }
   &__task-textarea {
     @include box-padding(10px, 30px);
@@ -59,55 +55,13 @@
     border-radius: 10px;
     transition: 0.2s;
     cursor: pointer;
-    &:hover {
+    &:hover,
+    &--active,
+    &:focus {
       transform: scale(1.2);
     }
-    &--active {
-      transform: scale(1.2);
-    }
-  }
-}
-
-.react-datepicker {
-  color: $text-color !important;
-  border-radius: 20px;
-  background-color: lighten($bg-header-color, 7%);
-  border: 0;
-  outline: none;
-  &-popper {
-    z-index: 2 !important;
-  }
-  &__header {
-    background-color: lighten($bg-header-color, 4%);
-    border: 0;
-  }
-  &__day-name,
-  &__day,
-  &__time-name,
-  &__current-month,
-  &-time__header,
-  &-year-header {
-    color: $text-color;
-  }
-  &__day--disabled {
-    text-decoration: line-through;
-  }
-  &__day:hover {
-    background-color: #1d5d90;
-    font-weight: bold;
-  }
-  &__navigation--next {
-    border-left-color: $text-color;
-    &:hover {
-      border-left-color: $text-color;
-      transform: scale(1.2);
-    }
-  }
-  &__navigation--previous {
-    border-right-color: $text-color;
-    &:hover {
-      border-right-color: $text-color;
-      transform: scale(1.2);
+    &:focus {
+      box-shadow: 0 0 0 3px white;
     }
   }
 }

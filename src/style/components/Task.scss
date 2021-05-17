@@ -3,6 +3,7 @@
   flex-direction: column;
   background-color: $bg-header-color;
   &__task {
+    border: none;
     @include box-basic($bg-color, null, null, null, $bg-header-color);
     @include box-margin(1vh, $horizontal-shift);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -33,7 +34,8 @@
       @include box-basic($task-done-color, null, null, null, $text-color);
       text-decoration: line-through;
     }
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: lighten(SteelBlue, 10%);
       box-shadow: 0 0 0 5px white;
       color: white;

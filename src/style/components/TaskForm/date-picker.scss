@@ -1,0 +1,44 @@
+.react-datepicker {
+  color: $text-color !important;
+  border-radius: 20px;
+  background-color: lighten($bg-header-color, 7%);
+  border: 0;
+  outline: none;
+  margin-left: 10px;
+  &-popper {
+    z-index: 2 !important;
+  }
+  &__header {
+    background-color: lighten($bg-header-color, 4%);
+    border: 0;
+  }
+  &__day-name,
+  &__day,
+  &__time-name,
+  &__current-month,
+  &-time__header,
+  &-year-header {
+    color: $text-color;
+  }
+  &__day--disabled {
+    text-decoration: line-through;
+  }
+  &__day:hover {
+    background-color: #1d5d90;
+    font-weight: bold;
+  }
+  &__navigation--next {
+    border-left-color: $text-color;
+    &:hover {
+      border-left-color: $text-color;
+      transform: scale(1.2);
+    }
+  }
+  &__navigation--previous {
+    border-right-color: $text-color;
+    &:hover {
+      border-right-color: $text-color;
+      transform: scale(1.2);
+    }
+  }
+}

@@ -9,7 +9,8 @@
   font-size: $btn-size;
   cursor: pointer;
   transition: 0.1s;
-  &:hover {
+  &:hover,
+  &:focus {
     transform: scale(1.1);
     color: $bg-header-color;
     background-color: $text-color;

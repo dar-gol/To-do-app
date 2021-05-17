@@ -34,11 +34,7 @@ const Task = (props) => {
           USUŃ
         </button>
       </div>
-      {props.task.isChanged ? (
-        <p className="to-do-list__text">...</p>
-      ) : (
-        <p className="to-do-list__text">{props.task.title}</p>
-      )}
+      <p className="to-do-list__text">{props.task.title}</p>
     </div>
   );
 };

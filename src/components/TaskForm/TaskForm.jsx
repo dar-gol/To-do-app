@@ -49,7 +49,11 @@ const TaskForm = ({add}) => {
             <div className="add-task__form-row">
               <DatePickerField
                 name="date"
+                label="Data wykonania:"
+                id="date"
+                className="text-input"
               />
+              <label className="label">Kolor trwającego zadania: </label>
               {taskColor.map((color, index) => {
                 return (
                   <button
