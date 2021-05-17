@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Task = (props) => {
-  const { date } = props.task;
   return (
     <div
       className={`to-do-list__task to-do-list__task${
@@ -38,18 +37,7 @@ const Task = (props) => {
       {props.task.isChanged ? (
         <p className="to-do-list__text">...</p>
       ) : (
-        <p className="to-do-list__text">
-          {' '}
-          {typeof date === 'boolean'
-            ? props.task.name
-            : `${props.task.name} (do dnia ${
-                date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
-              }.${
-                date.getMonth() + 1 < 10
-                  ? '0' + (date.getMonth() + 1)
-                  : date.getMonth() + 1
-              }.${date.getFullYear()} roku)`}
-        </p>
+        <p className="to-do-list__text">{props.task.title}</p>
       )}
     </div>
   );

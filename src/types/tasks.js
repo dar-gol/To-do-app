@@ -1,0 +1,11 @@
+const ADD_TASK = 'ADD_TASK';
+const MODIFY_TASK = 'MODIFY_TASK';
+const DELETE_TASK = 'DELETE_TASK';
+const RESET_TASKS = 'RESET_TASKS';
+
+export default {
+  ADD_TASK,
+  MODIFY_TASK,
+  DELETE_TASK,
+  RESET_TASKS,
+};

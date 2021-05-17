@@ -4,8 +4,9 @@
   background-color: $bg-header-color;
   &__task {
     @include box-basic($bg-color, null, null, null, $bg-header-color);
+    @include box-margin(1vh, $horizontal-shift);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    height: $task-height;
+    // height: $task-height;
     min-height: 50px;
     opacity: 1;
     display: flex;
@@ -13,7 +14,8 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 20px;
-    @include box-margin(1vh, $horizontal-shift);
+    transition: 0.2s;
+    cursor: pointer;
     &--during {
       @include box-basic($task-during-color, null, null, null, null);
     }
@@ -31,6 +33,11 @@
       @include box-basic($task-done-color, null, null, null, $text-color);
       text-decoration: line-through;
     }
+    &:hover {
+      background-color: lighten(SteelBlue, 10%);
+      box-shadow: 0 0 0 5px white;
+      color: white;
+    }
   }
   &__container-btn {
     margin-right: $elements-task-shift;
@@ -41,5 +48,34 @@
   }
   &__button {
     background-color: $bg-header-color;
+  }
+}
+
+@media (max-width: 700px) and (orientation: portrait) {
+  .to-do-list__container-btn {
+  }
+  .to-do-list__text {
+    margin-bottom: 0.5vh;
+  }
+  .to-do-list__task {
+    flex-direction: column-reverse;
+    padding: 1vh 0;
+  }
+}
+
+@media (max-width: 500px) and (orientation: portrait) {
+  .to-do-list__container-btn {
+    margin: 0;
+  }
+  .to-do-list__button {
+    margin: 0.2vw;
+    // padding: 0;
+  }
+  .to-do-list__text {
+    margin-left: 0;
+  }
+  .to-do-list__task {
+    flex-direction: column-reverse;
+    padding: 1vh 0;
   }
 }

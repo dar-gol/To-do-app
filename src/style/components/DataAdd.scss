@@ -12,13 +12,43 @@
     border-bottom: 2px solid $text-color;
   }
   &__form {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+  }
+  &__form-row {
+    @include box-basic(null, white, solid, 3px);
+    @include box-padding(1vh, 1vw);
+    @include box-margin(0, 0, 1vh, 0);
+    background-color: lighten($bg-header-color, 5%);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
     flex-basis: 100%;
   }
-  &__extends {
-    display: none;
-    &--active {
-      @include box-margin($vertical-shift, 0);
-      display: flex;
+  &__task-input {
+    border: 0;
+    border-right: white solid 1px;
+    flex-grow: 1;
+    transition: 0.2s;
+    &:focus {
+      border-bottom: 1px solid white;
+    }
+  }
+  &__task-textarea {
+    @include box-padding(10px, 30px);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: lighten($bg-header-color, 15%);
+    border-radius: 30px;
+    outline: none;
+    resize: none;
+    overflow: auto;
+    color: darken($bg-header-color, 20%);
+    border: none;
+    transition: 0.2s;
+    &:focus {
+      box-shadow: 0 0 0 3px $bg-header-color;
     }
   }
   &__bg-button {
@@ -41,13 +71,14 @@
 .react-datepicker {
   color: $text-color !important;
   border-radius: 20px;
-  background-color: $bg-header-color;
+  background-color: lighten($bg-header-color, 7%);
   border: 0;
+  outline: none;
   &-popper {
     z-index: 2 !important;
   }
   &__header {
-    background-color: $bg-header-color;
+    background-color: lighten($bg-header-color, 4%);
     border: 0;
   }
   &__day-name,

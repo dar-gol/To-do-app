@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Task from '../components/Task';
-import DataAdder from '../components/DataAdd';
+import TaskForm from '../components/TaskForm/TaskForm';
 import Popup from '../components/Popup';
+import TasksContainer from '../components/TasksContainer';
 
 import '../style/main.scss';
 class App extends Component {
@@ -197,31 +197,14 @@ class App extends Component {
             this.state.popup ? 'container--blur-filter' : ''
           }`}
         >
-          <header className="add-task">
-            <h2 className="add-task__title">Lista zadań </h2>
-            <DataAdder
-              date={this.state.newDate}
-              priority={this.state.newPriority}
-              value={this.state.newTask}
-              addTask={this.handleAddTask}
-              change={this.state.tasksChange}
-            />
-          </header>
-          <main className="to-do-list">
-            {this.state.tasks.map((task, index) => {
-              return (
-                <Task
-                  task={task}
-                  key={index}
-                  index={index}
-                  delete={this.handleTaskDeleteButton}
-                  modify={this.handleTaskModify}
-                  value={this.state.newTask}
-                  addTask={this.handleAddTask}
-                />
-              );
-            })}
-          </main>
+          <TaskForm
+            date={this.state.newDate}
+            priority={this.state.newPriority}
+            value={this.state.newTask}
+            addTask={this.handleAddTask}
+            change={this.state.tasksChange}
+          />
+          <TasksContainer />
         </div>
       </>
     );
