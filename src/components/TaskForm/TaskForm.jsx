@@ -17,20 +17,34 @@ const taskColor = [
   '#3ab0df',
 ];
 
-const TaskForm = ({add}) => {
+const TaskForm = ({add, modify, togglePopup,  index, tasks}) => {
   const [currentTaskColor, setCurrentTaskColor] = useState('white');
 
   const handleSetCurrentTaskColor = (color) => setCurrentTaskColor(color);
 
+  const isChangeTask = typeof index === 'number'
+
+  const startValues = {
+    title: isChangeTask ? tasks[index].title : '',
+    date: isChangeTask ? tasks[index].date : new Date(),
+    description: isChangeTask ? tasks[index].description : '',
+    color: 'white'
+  }
+
   return (
     <header className="add-task">
-      <h2 className="add-task__title">Lista zadań </h2>
+      <h2 className="add-task__title">{isChangeTask ? 'Zmień zadanie' : 'lista zadań'}</h2>
       <Formik
-        initialValues={{ title: '', date: new Date(), description: ''}}
+        initialValues={startValues}
         onSubmit={(values, {resetForm}) => {
           const { title, date, description } = values;
-          add({ title, date, color: currentTaskColor, during: true, description })
           resetForm({});
+          if (isChangeTask) {
+            modify({ title, date, color: currentTaskColor, during: true, description }, index)
+            togglePopup(false);
+          } else {
+            add({ title, date, color: currentTaskColor, during: true, description })
+          }
         }}>
           {
         ({
@@ -83,6 +97,11 @@ const TaskForm = ({add}) => {
 
 const mapDispatchToProps = (dispatch) => ({
   add: task => dispatch(actions.addTask(task)),
+  modify: (task, modifyId) => dispatch(actions.modifyTask(task, modifyId)),
 })
 
-export default connect(null, mapDispatchToProps)(TaskForm);
+const mapStateToProps = state => ({
+  tasks: state.tasks.list,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskForm);

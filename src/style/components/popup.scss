@@ -8,14 +8,15 @@
   @include font();
   @include shadow(mix($bg-header-color, grey), 2px, 1px, 2px);
   @include box-basic($bg-header-color, null, null, null, $text-color);
+  @include box-padding(0, 1vw);
   z-index: 5;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   filter: blur(0px);
-  width: $popup-width;
-  height: $popup-height;
+  min-width: $popup-width;
+  min-height: $popup-height;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -6,18 +6,24 @@ import TasksContainer from '../components/TasksContainer';
 
 import '../style/main.scss';
 const App = () => {
-  const [popup, setPopup] = useState('');
+  const [popup, setPopup] = useState(false);
 
   const togglePopup = (error) => {
-    setPopup({ popup: error });
+    setPopup(error);
   };
 
   return (
     <>
-      {popup && <Popup togglePopup={togglePopup} error={this.state.popup} />}
-      <div className={`container ${popup ? 'container--blur-filter' : ''}`}>
-        <TaskForm />
-        <TasksContainer />
+      {popup !== false && (
+        <Popup togglePopup={togglePopup} isChangeTask={popup} />
+      )}
+      <div
+        className={`container ${
+          popup !== false ? 'container--blur-filter' : ''
+        }`}
+      >
+        <TaskForm togglePopup={togglePopup} />
+        <TasksContainer togglePopup={togglePopup} />
       </div>
     </>
   );

@@ -1,13 +1,18 @@
 import React from 'react';
 
-const Popup = (props) => {
-  const { togglePopup, error } = props;
+import TaskForm from './TaskForm/TaskForm';
+
+const Popup = ({ togglePopup, isChangeTask }) => {
   return (
     <div className="popup">
-      <button className="popup__exit" onClick={() => togglePopup('')}>
+      <button className="popup__exit" onClick={() => togglePopup(false)}>
         <i className="fas fa-times popup__exit-icon"></i>
       </button>
-      <h2>{error}</h2>
+      {typeof isChangeTask === 'number' ? (
+        <TaskForm index={isChangeTask} togglePopup={togglePopup} />
+      ) : (
+        <h2>{isChangeTask}</h2>
+      )}
     </div>
   );
 };

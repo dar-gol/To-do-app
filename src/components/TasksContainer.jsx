@@ -5,11 +5,11 @@ import actions from '../actions/tasks';
 
 import Task from './Task'
 
-const TasksContainer = ({ tasks, modify, deleteTask }) => {
+const TasksContainer = ({ tasks, modify, deleteTask, togglePopup }) => {
     return (
         <main className="to-do-list">
             {tasks.map((task, id) => (
-                <Task key={id} task={task} modify={modify} index={id} deleteTask={deleteTask} />
+                <Task key={id} task={task} modify={modify} index={id} deleteTask={deleteTask} togglePopup={togglePopup} />
             ))}
         </main>
     )

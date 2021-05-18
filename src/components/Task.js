@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Task = ({ task, modify, index, deleteTask }) => {
-  const { during, isChanged, priority, title } = task;
+const Task = ({ task, modify, index, deleteTask, togglePopup }) => {
+  const { during, isChanged, description, priority, title } = task;
   return (
     <div
       className={`to-do-list__task to-do-list__task${
@@ -20,34 +20,25 @@ const Task = ({ task, modify, index, deleteTask }) => {
         <button
           className="button to-do-list__button"
           name="ButtonChange"
-          onClick={() =>
-            modify(
-              {
-                date: '2021-12-01',
-                during: true,
-                title: 'Zrobić zakupy',
-                description:
-                  'Coś na sniadanko: pomidorek, kiełbasa, cebula, jaja, sałata',
-                color: 'white',
-              },
-              index
-            )
-          }
+          onClick={() => {
+            return togglePopup(index);
+          }}
         >
           ZMIEŃ
         </button>
         <button
           className="button to-do-list__button"
-          onClick={() => deleteTask(index)}
+          onClick={(e) => deleteTask(index)}
         >
           USUŃ
         </button>
       </div>
-      <p
+      <button
         className={`to-do-list__text to-do-list__text${during ? '' : `--done`}`}
+        onClick={() => togglePopup(description)}
       >
         {title}
-      </p>
+      </button>
     </div>
   );
 };
