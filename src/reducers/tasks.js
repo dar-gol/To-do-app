@@ -20,6 +20,14 @@ const INITIAL_TASKS = {
       color: 'Bisque',
     },
     {
+      date: '2021-03-03',
+      during: true,
+      title:
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint debitis dolor ipsa labore nemo, quam sapiente rem totam accusamus aliquid fuga doloribus beatae inventore necessitatibus placeat culpa corrupti eum voluptates?',
+      description: 'Kupic opone bo przebita i drążek od skrzyni biegów',
+      color: 'Bisque',
+    },
+    {
       date: '2021-07-21',
       during: false,
       title: 'Pojechać do babci na urodziny',
@@ -30,6 +38,14 @@ const INITIAL_TASKS = {
       date: '2021-11-30',
       during: true,
       title: 'Nauczyć się na angola',
+      description: 'słówka, słówka i jeszcze raz słówka...',
+      color: 'Bisque',
+    },
+    {
+      date: '2021-11-30',
+      during: false,
+      title:
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint debitis dolor ipsa labore nemo, quam sapiente rem totam accusamus aliquid fuga doloribus beatae inventore necessitatibus placeat culpa corrupti eum voluptates?',
       description: 'słówka, słówka i jeszcze raz słówka...',
       color: 'Bisque',
     },
@@ -53,6 +69,8 @@ const tasksReducer = (state = INITIAL_TASKS, action) => {
       };
     }
     case MODIFY_TASK: {
+      const { task, modifyId } = action.payload;
+      console.log({ task, modifyId });
       const newTasks = state.list.map((task, id) => {
         if (id === action.payload.modifyId) {
           return action.payload.task;

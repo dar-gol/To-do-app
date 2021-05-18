@@ -32,7 +32,6 @@
     }
     &--done {
       @include box-basic($task-done-color, null, null, null, $text-color);
-      text-decoration: line-through;
     }
     &:hover,
     &:focus {
@@ -42,13 +41,18 @@
     }
   }
   &__container-btn {
+    display: flex;
     margin-right: $elements-task-shift;
     z-index: 1;
   }
   &__text {
     margin-left: $elements-task-shift;
+    &--done {
+      text-decoration: line-through;
+    }
   }
   &__button {
+    white-space: nowrap;
     background-color: $bg-header-color;
   }
 }

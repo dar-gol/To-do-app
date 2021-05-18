@@ -53,6 +53,8 @@ const TaskForm = ({add}) => {
                 id="date"
                 className="text-input"
               />
+              </div>
+              <div className="add-task__form-row">
               <label className="label">Kolor trwającego zadania: </label>
               {taskColor.map((color, index) => {
                 return (

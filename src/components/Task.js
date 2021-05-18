@@ -1,40 +1,53 @@
 import React from 'react';
 
-const Task = (props) => {
+const Task = ({ task, modify, index, deleteTask }) => {
+  const { during, isChanged, priority, title } = task;
   return (
     <div
       className={`to-do-list__task to-do-list__task${
-        props.task.during
-          ? props.task.isChanged
-            ? '--changing'
-            : '--during'
-          : '--done'
+        during ? (isChanged ? '--changing' : '--during') : '--done'
       }`}
-      style={{ backgroundColor: props.task.priority }}
+      style={{ backgroundColor: priority }}
     >
       <div className="to-do-list__container-btn">
         <button
           className="button to-do-list__button"
           name="ButtonDuring"
-          onClick={(e) => props.modify(props.index, e)}
+          onClick={(e) => modify(index, e)}
         >
-          {props.task.during ? 'SKOŃCZONE' : 'W TRAKCIE'}
+          {during ? 'SKOŃCZONE' : 'W TRAKCIE'}
         </button>
         <button
           className="button to-do-list__button"
           name="ButtonChange"
-          onClick={(e) => props.modify(props.index, e)}
+          onClick={() =>
+            modify(
+              {
+                date: '2021-12-01',
+                during: true,
+                title: 'Zrobić zakupy',
+                description:
+                  'Coś na sniadanko: pomidorek, kiełbasa, cebula, jaja, sałata',
+                color: 'white',
+              },
+              index
+            )
+          }
         >
           ZMIEŃ
         </button>
         <button
           className="button to-do-list__button"
-          onClick={() => props.delete(props.index)}
+          onClick={() => deleteTask(index)}
         >
           USUŃ
         </button>
       </div>
-      <p className="to-do-list__text">{props.task.title}</p>
+      <p
+        className={`to-do-list__text to-do-list__text${during ? '' : `--done`}`}
+      >
+        {title}
+      </p>
     </div>
   );
 };

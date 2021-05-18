@@ -65,3 +65,9 @@
     }
   }
 }
+
+@media (max-width: 700px) and (orientation: portrait) {
+  .add-task__form-row {
+    flex-wrap: wrap;
+  }
+}
